@@ -1,7 +1,7 @@
-# CF-Email-Worker
+# Cloudflare Email Worker
 Send emails through MailChannels for FREE using Cloudflare Workers!
 
-Back in 2022, Cloudflare announced a partnership with MailChannels to make sending emails on Cloudflare Workers free. This means that you can send up to 100,000 emails per day for FREE!!
+Back in 2022, [Cloudflare announced a partnership with MailChannels to make sending emails on Cloudflare Workers free](https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels). This means that you can send up to 100,000 emails per day for FREE (as long as you have a domain)!!
 
 
 ## Prerequisites
@@ -59,7 +59,7 @@ You may want to look at setting up [DMARC](https://en.wikipedia.org/wiki/DMARC) 
 2. Click 'Create Worker'. <br /> ![.](https://u.cubeupload.com/tnix100/workersoverview.png)
 3. Give the Worker a name of "email-worker" or something similar, then deploy the Worker with the default 'Hello World' script.
 4. Once the Worker has been deployed, record the URL it gives you, and then click 'Edit code'. <br /> ![.](https://u.cubeupload.com/tnix100/workereditcode.png)
-5. Paste the code from [worker.js](https://github.com/tnix100/CF-Email-Worker/worker.js) into the script and then click 'Deploy'. <br /> ![.](https://u.cubeupload.com/tnix100/workereditcode2.png)
+5. Paste the code from [worker.js](https://raw.githubusercontent.com/tnix100/CF-Email-Worker/main/worker.js) into the script and then click 'Deploy'. <br /> ![.](https://u.cubeupload.com/tnix100/workereditcode2.png)
 6. Return to the Worker Overview after the Worker deploys. <br /> ![.](https://u.cubeupload.com/tnix100/workerreturn.png)
 7. Go to 'Environment Variables' under 'Settings'. <br /> ![.](https://u.cubeupload.com/tnix100/workerenvvars.png)
 8. Add the following environment variables:
@@ -108,6 +108,7 @@ POST <email worker domain>
 | Authorization | The token in the `AUTH_TOKEN` Worker environment variable. |
 
 #### Body
+`application/json`
 | Name | Description | Optional |
 |-|-|-|
 | email | The email address you want to send this email to. | |
@@ -121,4 +122,7 @@ You should get a `202 Accepted` response if the email was successfully sent.
 
 
 ## Adding a custom domain
+> [!NOTE]
+> This will only work if you are using Cloudflare for your domain's DNS.
+
 I recommend adding a custom domain to your Worker and disabling the default .workers.dev trigger. This will allow you to set up WAF rules to block requests that do not come from your server, which will prevent others from wasting your daily Worker requests and add more security to your Worker. <br /> ![.](https://u.cubeupload.com/tnix100/workertriggers.png) <br /> ![.](https://u.cubeupload.com/tnix100/workerwaf.png)
