@@ -1,4 +1,8 @@
 # Cloudflare Email Worker
+> [!WARNING]
+> This free service is being discontinuined. This repository will remain archived.
+> https://support.mailchannels.com/hc/en-us/articles/26814255454093-End-of-Life-Notice-Cloudflare-Workers
+
 Send emails through MailChannels for FREE using Cloudflare Workers!
 
 Back in 2022, [Cloudflare announced a partnership with MailChannels to make sending emails on Cloudflare Workers free](https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels). This means that you can send up to 100,000 emails per day for FREE (as long as you have a domain)!!
